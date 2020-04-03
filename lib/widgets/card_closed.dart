@@ -63,13 +63,21 @@ class CardClosed extends StatelessWidget {
                           color: Colors.green,
                         ),
                       ),
-                      Text(
-                        '$recoveredPercentage %',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
-                      ),
+                      recovered != 0
+                          ? Text(
+                              '$recoveredPercentage %',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 24),
+                            )
+                          : Text(
+                              'No recovered',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 16),
+                            ),
                     ],
                   ),
                 ),
@@ -84,13 +92,21 @@ class CardClosed extends StatelessWidget {
                         Icons.arrow_upward,
                         color: Colors.red,
                       ),
-                      Text(
-                        ' $deathPercentage %',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
-                      ),
+                      death != 0
+                          ? Text(
+                              ' $deathPercentage %',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 24),
+                            )
+                          : Text(
+                              'No death',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 16),
+                            ),
                     ],
                   ),
                 ),
