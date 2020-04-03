@@ -71,8 +71,8 @@ class _DetailScreenState extends State<DetailScreen> {
                         child: Column(
                           children: <Widget>[
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 160, bottom: 16),
+                              padding: const EdgeInsets.only(
+                                  right: 160, bottom: 8, top: 8),
                               child: Text(
                                 dateFormat.toString(),
                                 style: TextStyle(
@@ -104,7 +104,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(right: 200, top: 8),
+                                  const EdgeInsets.only(right: 170, top: 8),
                               child: Text(
                                 snapshot.data.cases.toString(),
                                 style: TextStyle(
