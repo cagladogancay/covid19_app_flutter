@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercovid19/widgets/card_active.dart';
 import 'package:fluttercovid19/widgets/card_closed.dart';
@@ -65,54 +66,57 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                         ),
                       ),
+                      Positioned(
+                        top: 60,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          child: Text(
+                            dateFormat.toString(),
+                            style: TextStyle(fontSize: 14, color: Colors.white),
+                          ),
+                        ),
+                      ),
+
                       //Covid Cases
                       Positioned(
-                        top: 70,
-                        child: Column(
+                        top: 90,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 160, bottom: 8, top: 8),
-                              child: Text(
-                                dateFormat.toString(),
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.white),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 70),
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Corona Virus Cases',
+                            Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 16),
+                                  child: Text(
+                                    'Coronavirus Cases',
                                     style: TextStyle(
                                         fontSize: 18, color: Colors.white),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 16),
-                                    child: FadeInImage.assetNetwork(
-                                      placeholder: 'assets/load.gif',
-                                      image: snapshot.data.countryInfo.flag,
-                                      fit: BoxFit.cover,
-                                      width: 100,
-                                      height: 50,
-                                    ),
+                                ),
+                                Text(
+                                  snapshot.data.cases.toString(),
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                            snapshot.data.countryInfo.flag !=
+                                        "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/unknow.png" ||
+                                    snapshot.data.country != 'World'
+                                ? Image.network(
+                                    snapshot.data.countryInfo.flag,
+                                    fit: BoxFit.cover,
+                                    width: 150,
+                                    height: 100,
                                   )
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 170, top: 8),
-                              child: Text(
-                                snapshot.data.cases.toString(),
-                                style: TextStyle(
-                                    fontSize: 32,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                                : Image.asset(
+                                    'assets/world.png',
+                                    fit: BoxFit.cover,
+                                  ),
                           ],
                         ),
                       ),
@@ -169,7 +173,7 @@ class _DetailScreenState extends State<DetailScreen> {
               ],
             );
           } else {
-            return Text('Invalid Api');
+            return Center(child: Text('Invalid Api'));
           }
         },
       ),

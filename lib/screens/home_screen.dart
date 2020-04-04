@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             Center(
                               child: Text(
-                                'Select your Country',
+                                'Select your country',
                                 style: TextStyle(
                                     fontSize: 18, color: Colors.grey.shade700),
                               ),
@@ -166,13 +166,26 @@ class _HomeScreenState extends State<HomeScreen> {
                                           value: f.country,
                                           child: Row(
                                             children: <Widget>[
-                                              FadeInImage.assetNetwork(
-                                                placeholder: 'assets/load.gif',
-                                                image: f.countryInfo.flag,
-                                                width: 24,
-                                                height: 24,
-                                                fit: BoxFit.cover,
-                                              ),
+                                              f.countryInfo.flag !=
+                                                          "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/unknow.png" ||
+                                                      f.country != 'World'
+                                                  ? FadeInImage.assetNetwork(
+                                                      placeholder:
+                                                          'assets/load.gif',
+                                                      image: f.countryInfo.flag,
+                                                      height: 32,
+                                                      width: 64,
+                                                      fit: BoxFit.cover,
+                                                    )
+                                                  : FadeInImage(
+                                                      placeholder: AssetImage(
+                                                          'assets/load.gif'),
+                                                      image: AssetImage(
+                                                          'assets/worldicon.png'),
+                                                      fit: BoxFit.cover,
+                                                      width: 24,
+                                                      height: 24,
+                                                    ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     left: 8),
