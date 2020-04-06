@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/commons/custom_home_app_bar.dart';
 import 'package:fluttercovid19/utils/strings.dart';
 import 'package:fluttercovid19/utils/text_styles.dart';
 import 'package:fluttercovid19/widgets/card_cases.dart';
@@ -28,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
   }
-
 
   Future<All> getAllCases() async {
     var response = await http.get(Strings.URL_ALL);
@@ -61,17 +61,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: Stack(
                     children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          CustomHomeAppBar(dateFormat),
+                        ],
+                      ),
                       Container(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.4,
                           color: Colors.redAccent),
-                      //Appbar
-                      Positioned(
-                        child: AppBar(
-                          elevation: 0,
-                          backgroundColor: Colors.transparent,
-                        ),
-                      ),
                       //Covid Cases
                       Positioned(
                         top: 50,
@@ -113,11 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16),
-                              child: CardWidget(
-                                  Strings.STATUS_LABEL_NAME_1, snapshot.data.deaths, Colors.green),
+                              child: CardWidget(Strings.STATUS_LABEL_NAME_1,
+                                  snapshot.data.deaths, Colors.green),
                             ),
-                            CardWidget(Strings.STATUS_RECOVERY, snapshot.data.recovered,
-                                Colors.red),
+                            CardWidget(Strings.STATUS_RECOVERY,
+                                snapshot.data.recovered, Colors.red),
                           ],
                         ),
                       )
@@ -134,7 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 0.2,
-                        child: CardCases(Strings.CASE_NAME_1, snapshot.data.active),
+                        child: CardCases(
+                            Strings.CASE_NAME_1, snapshot.data.active),
                       ),
                       //country selection
                       Container(
@@ -196,8 +195,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Strings.IS_SELECTED_COUNTRY = value;
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            DetailScreen(Strings.IS_SELECTED_COUNTRY),
+                                        builder: (context) => DetailScreen(
+                                            Strings.IS_SELECTED_COUNTRY),
                                       ),
                                     );
                                   }),

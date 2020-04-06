@@ -66,13 +66,13 @@ class CardActive extends StatelessWidget {
                       ),
                       Text(
                         ' $mildCondition %',
-                        style:TextStyles.typeConditionPercentageTextStyle,
+                        style: TextStyles.typeConditionPercentageTextStyle,
                       ),
                     ],
                   ),
                 ),
                 Text(
-                Strings.CONDITION_NAME_1,
+                  Strings.CONDITION_NAME_1,
                   style: TextStyles.typeConditionTextStyle,
                 ),
                 Container(
@@ -90,7 +90,7 @@ class CardActive extends StatelessWidget {
                   ),
                 ),
                 Text(
-                Strings.CONDITION_NAME_2,
+                  Strings.CONDITION_NAME_2,
                   style: TextStyles.typeConditionTextStyle,
                 ),
               ],

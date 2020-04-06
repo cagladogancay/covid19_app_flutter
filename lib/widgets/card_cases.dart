@@ -29,7 +29,7 @@ class CardCases extends StatelessWidget {
               ),
               Text(
                 activeCases.toString(),
-                style:TextStyles.typeCasesTextStyle,
+                style: TextStyles.typeCasesTextStyle,
               ),
             ],
           ),

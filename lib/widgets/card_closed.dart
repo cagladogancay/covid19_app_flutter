@@ -37,12 +37,12 @@ class CardClosed extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   caseName,
-                  style:TextStyles.caseNameTextStyle,
+                  style: TextStyles.caseNameTextStyle,
                 ),
               ),
               Text(
                 '$closedCases',
-                style:TextStyles.typeCasesTextStyle,
+                style: TextStyles.typeCasesTextStyle,
               ),
             ],
           ),
@@ -65,11 +65,12 @@ class CardClosed extends StatelessWidget {
                       recovered != 0
                           ? Text(
                               '$recoveredPercentage %',
-                              style: TextStyles.typeConditionPercentageTextStyle,
+                              style:
+                                  TextStyles.typeConditionPercentageTextStyle,
                             )
                           : Text(
-                             Strings.STATUS_NO_RECOVERY,
-                              style:TextStyles.noStatusTextStyle,
+                              Strings.STATUS_NO_RECOVERY,
+                              style: TextStyles.noStatusTextStyle,
                             ),
                     ],
                   ),
@@ -88,10 +89,11 @@ class CardClosed extends StatelessWidget {
                       death != 0
                           ? Text(
                               ' $deathPercentage %',
-                              style:TextStyles.typeConditionPercentageTextStyle,
+                              style:
+                                  TextStyles.typeConditionPercentageTextStyle,
                             )
                           : Text(
-                             Strings.STATUS_NO_DEATH,
+                              Strings.STATUS_NO_DEATH,
                               style: TextStyles.noStatusTextStyle,
                             ),
                     ],

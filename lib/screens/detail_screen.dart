@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercovid19/utils/strings.dart';
-import 'package:fluttercovid19/utils/text_styles.dart';
 import 'package:fluttercovid19/widgets/card_active.dart';
 import 'package:fluttercovid19/widgets/card_closed.dart';
 import 'package:fluttercovid19/widgets/card_home.dart';
 import 'package:fluttercovid19/constants.dart';
 import 'package:fluttercovid19/models/country_detail.dart';
+import 'package:fluttercovid19/commons/custom_detail_app_bar.dart';
 import 'package:http/http.dart' as http;
 
 class DetailScreen extends StatefulWidget {
@@ -56,66 +56,14 @@ class _DetailScreenState extends State<DetailScreen> {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.4,
                           color: Colors.redAccent),
-                      //Appbar
-                      Positioned(
-                        child: AppBar(
-                          elevation: 0,
-                          backgroundColor: Colors.transparent,
-                          title: Text(
-                            snapshot.data.country,
-                            style: TextStyles.countryNameTextStyle,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 60,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 16),
-                          child: Text(
-                            dateFormat.toString(),
-                            style: TextStyles.appDateTextStyle,
-                          ),
-                        ),
-                      ),
-
-                      //Covid Cases
-                      Positioned(
-                        top: 90,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 16),
-                                  child: Text(
-                                    Strings.APP_TITLE,
-                                    style: TextStyles.appTitleTextStyle,
-                                  ),
-                                ),
-                                Text(
-                                  snapshot.data.cases.toString(),
-                                  style: TextStyles.casesTextStyle,
-                                )
-                              ],
-                            ),
-                            snapshot.data.countryInfo.flag !=
-                                        "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/unknow.png" ||
-                                    snapshot.data.country != 'World'
-                                ? Image.network(
-                                    snapshot.data.countryInfo.flag,
-                                    fit: BoxFit.cover,
-                                    width: 150,
-                                    height: 100,
-                                  )
-                                : Image.asset(
-                                    'assets/world.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                          ],
-                        ),
+                      Column(
+                        children: <Widget>[
+                          CustomDetailAppBar(
+                              snapshot.data.country,
+                              dateFormat,
+                              snapshot.data.cases,
+                              snapshot.data.countryInfo.flag),
+                        ],
                       ),
                       //Covid recovery and death
                       Positioned(
@@ -126,11 +74,11 @@ class _DetailScreenState extends State<DetailScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16),
-                              child: CardWidget(
-                                 Strings.STATUS_LABEL_NAME_1, snapshot.data.deaths, Colors.green),
+                              child: CardWidget(Strings.STATUS_LABEL_NAME_1,
+                                  snapshot.data.deaths, Colors.green),
                             ),
-                            CardWidget(Strings.STATUS_RECOVERY, snapshot.data.recovered,
-                                Colors.red),
+                            CardWidget(Strings.STATUS_RECOVERY,
+                                snapshot.data.recovered, Colors.red),
                           ],
                         ),
                       ),
@@ -157,7 +105,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 0.2,
                         child: CardClosed(
-                         Strings.CASE_NAME_3,
+                          Strings.CASE_NAME_3,
                           snapshot.data.cases,
                           snapshot.data.active,
                           snapshot.data.deaths,

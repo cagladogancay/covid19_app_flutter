@@ -4,11 +4,11 @@ import 'package:fluttercovid19/models/country_detail.dart';
 import 'package:intl/intl.dart';
 
 String updatedDate(int updated) {
-  var date = (DateTime.fromMicrosecondsSinceEpoch(
+  final f = DateFormat('dd-MM-yyyy').add_jm();
+  var date = f.format((DateTime.fromMicrosecondsSinceEpoch(
     updated * 1000,
-  ));
-  String dateFormat = DateFormat.yMd().add_jm().format(date);
-  return dateFormat;
+  )));
+  return date;
 }
 
 //variables
