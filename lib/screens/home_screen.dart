@@ -61,47 +61,50 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: Stack(
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          CustomHomeAppBar(dateFormat),
-                        ],
-                      ),
                       Container(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.4,
                           color: Colors.redAccent),
-                      //Covid Cases
-                      Positioned(
-                        top: 50,
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 32, bottom: 16),
-                              child: Text(
-                                dateFormat.toString(),
-                                style: TextStyles.appDateTextStyle,
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 48),
-                              child: Text(
-                                Strings.APP_TITLE,
-                                style: TextStyles.appTitleTextStyle,
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 48, top: 16),
-                              child: Text(
-                                snapshot.data.cases.toString(),
-                                style: TextStyles.casesTextStyle,
-                              ),
-                            ),
-                          ],
-                        ),
+                      Column(
+                        children: <Widget>[
+                          CustomHomeAppBar(
+                            dateFormat,
+                            snapshot.data.cases,
+                          ),
+                        ],
                       ),
+//                      //Covid Cases
+//                      Positioned(
+//                        top: 50,
+//                        child: Column(
+//                          children: <Widget>[
+//                            Padding(
+//                              padding:
+//                                  const EdgeInsets.only(right: 32, bottom: 16),
+//                              child: Text(
+//                                dateFormat.toString(),
+//                                style: TextStyles.appDateTextStyle,
+//                              ),
+//                            ),
+//                            Padding(
+//                              padding:
+//                                  const EdgeInsets.symmetric(horizontal: 48),
+//                              child: Text(
+//                                Strings.APP_TITLE,
+//                                style: TextStyles.appTitleTextStyle,
+//                              ),
+//                            ),
+//                            Padding(
+//                              padding:
+//                                  const EdgeInsets.only(right: 48, top: 16),
+//                              child: Text(
+//                                snapshot.data.cases.toString(),
+//                                style: TextStyles.casesTextStyle,
+//                              ),
+//                            ),
+//                          ],
+//                        ),
+//                      ),
                       //Covid recovery and death
                       Positioned(
                         top: 200,

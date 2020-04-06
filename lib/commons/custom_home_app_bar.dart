@@ -4,7 +4,8 @@ import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CustomHomeAppBar extends StatefulWidget {
   String dateFormat;
-  CustomHomeAppBar(this.dateFormat);
+  int cases;
+  CustomHomeAppBar(this.dateFormat, this.cases);
 
   @override
   _CustomHomeAppBarState createState() => _CustomHomeAppBarState();
@@ -17,7 +18,6 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
       padding: const EdgeInsets.only(top: 48, left: 16, right: 16),
       child: Row(
         children: <Widget>[
-          Spacer(),
           RichText(
             text: TextSpan(
               children: [
@@ -25,9 +25,16 @@ class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
                     text: widget.dateFormat,
                     style: TextStyles.appDateTextStyle),
                 TextSpan(text: '\n'),
+                TextSpan(text: '\n'),
                 TextSpan(
                     text: Strings.APP_TITLE,
                     style: TextStyles.appTitleTextStyle),
+                TextSpan(text: '\n'),
+                TextSpan(text: '\n'),
+                TextSpan(
+                  text: widget.cases.toString(),
+                  style: TextStyles.casesTextStyle,
+                ),
               ],
             ),
           ),
