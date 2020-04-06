@@ -1,16 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardCases extends StatelessWidget {
   int activeCases;
   String caseName;
-//  int critical;
-//  int totalCase;
 
   CardCases(this.caseName, this.activeCases);
   @override
   Widget build(BuildContext context) {
-    //   double criticalPercentage = (critical * 100) / totalCase;
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(
@@ -26,60 +24,15 @@ class CardCases extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   caseName,
-                  style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
+                  style: TextStyles.caseNameTextStyle,
                 ),
               ),
               Text(
                 activeCases.toString(),
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                style:TextStyles.typeCasesTextStyle,
               ),
             ],
           ),
-//          Padding(
-//            padding: const EdgeInsets.only(bottom: 8),
-//            child: Column(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              children: <Widget>[
-//                Row(
-//                  crossAxisAlignment: CrossAxisAlignment.center,
-//                  children: <Widget>[
-//                    Icon(
-//                      Icons.arrow_downward,
-//                      color: Colors.green,
-//                    ),
-//                    //rakam gelicek
-//                    Text('%95'),
-//                  ],
-//                ),
-//                Padding(
-//                  padding: const EdgeInsets.only(left: 48, top: 8),
-//                  child: Text(
-//                    'Mild Condition',
-//                  ),
-//                ),
-//                Row(
-//                  crossAxisAlignment: CrossAxisAlignment.center,
-//                  children: <Widget>[
-//                    Icon(
-//                      Icons.arrow_upward,
-//                      color: Colors.red,
-//                    ),
-//                    //rakam gelicek
-//                    Text(''),
-//                  ],
-//                ),
-//                Padding(
-//                  padding: const EdgeInsets.only(top: 8),
-//                  child: Text(
-//                    'Critical',
-//                  ),
-//                ),
-//              ],
-//            ),
-//          )
         ],
       ),
     );

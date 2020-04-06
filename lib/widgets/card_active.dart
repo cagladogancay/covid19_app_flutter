@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/utils/strings.dart';
+import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardActive extends StatelessWidget {
   int todayCases;
@@ -24,9 +26,7 @@ class CardActive extends StatelessWidget {
         double.parse(((critical * 100) / totalCases).toStringAsFixed(2));
     double mildCondition =
         double.parse((100 - criticalPercentage).toStringAsFixed(2));
-    int closedCases = totalCases - active;
-    print(active);
-    print(closedCases);
+//    int closedCases = totalCases - active;
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(
@@ -43,15 +43,12 @@ class CardActive extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   caseName,
-                  style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
+                  style: TextStyles.caseNameTextStyle,
                 ),
               ),
               Text(
                 todayCases.toString(),
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                style: TextStyles.typeCasesTextStyle,
               ),
             ],
           ),
@@ -69,17 +66,14 @@ class CardActive extends StatelessWidget {
                       ),
                       Text(
                         ' $mildCondition %',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
+                        style:TextStyles.typeConditionPercentageTextStyle,
                       ),
                     ],
                   ),
                 ),
                 Text(
-                  'Mild Condition',
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
+                Strings.CONDITION_NAME_1,
+                  style: TextStyles.typeConditionTextStyle,
                 ),
                 Container(
                   child: Row(
@@ -90,17 +84,14 @@ class CardActive extends StatelessWidget {
                       ),
                       Text(
                         ' $criticalPercentage %',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
+                        style: TextStyles.typeConditionPercentageTextStyle,
                       ),
                     ],
                   ),
                 ),
                 Text(
-                  'Critical',
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
+                Strings.CONDITION_NAME_2,
+                  style: TextStyles.typeConditionTextStyle,
                 ),
               ],
             ),

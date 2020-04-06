@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/utils/strings.dart';
+import 'package:fluttercovid19/utils/text_styles.dart';
 import 'package:fluttercovid19/widgets/card_active.dart';
 import 'package:fluttercovid19/widgets/card_closed.dart';
 import 'package:fluttercovid19/widgets/card_home.dart';
@@ -10,7 +12,6 @@ import 'package:http/http.dart' as http;
 
 class DetailScreen extends StatefulWidget {
   String country;
-
   DetailScreen(this.country);
 
   @override
@@ -62,7 +63,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           backgroundColor: Colors.transparent,
                           title: Text(
                             snapshot.data.country,
-                            style: TextStyle(fontSize: 24, color: Colors.white),
+                            style: TextStyles.countryNameTextStyle,
                           ),
                         ),
                       ),
@@ -73,7 +74,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               horizontal: 16, vertical: 16),
                           child: Text(
                             dateFormat.toString(),
-                            style: TextStyle(fontSize: 14, color: Colors.white),
+                            style: TextStyles.appDateTextStyle,
                           ),
                         ),
                       ),
@@ -90,17 +91,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 12, vertical: 16),
                                   child: Text(
-                                    'Coronavirus Cases',
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.white),
+                                    Strings.APP_TITLE,
+                                    style: TextStyles.appTitleTextStyle,
                                   ),
                                 ),
                                 Text(
                                   snapshot.data.cases.toString(),
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyles.casesTextStyle,
                                 )
                               ],
                             ),
@@ -130,9 +127,9 @@ class _DetailScreenState extends State<DetailScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16),
                               child: CardWidget(
-                                  'Deaths', snapshot.data.deaths, Colors.green),
+                                 Strings.STATUS_LABEL_NAME_1, snapshot.data.deaths, Colors.green),
                             ),
-                            CardWidget('Recovered', snapshot.data.recovered,
+                            CardWidget(Strings.STATUS_RECOVERY, snapshot.data.recovered,
                                 Colors.red),
                           ],
                         ),
@@ -150,7 +147,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           width: MediaQuery.of(context).size.width * 0.9,
                           height: MediaQuery.of(context).size.height * 0.2,
                           child: CardActive(
-                            'Today Cases',
+                            Strings.CASE_NAME_2,
                             snapshot.data.cases,
                             snapshot.data.active,
                             snapshot.data.todayCases,
@@ -160,7 +157,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 0.2,
                         child: CardClosed(
-                          'Closed Cases',
+                         Strings.CASE_NAME_3,
                           snapshot.data.cases,
                           snapshot.data.active,
                           snapshot.data.deaths,
@@ -173,7 +170,7 @@ class _DetailScreenState extends State<DetailScreen> {
               ],
             );
           } else {
-            return Center(child: Text('Invalid Api'));
+            return Center(child: Text(Strings.API_INVALID));
           }
         },
       ),

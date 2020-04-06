@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/utils/strings.dart';
+import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardClosed extends StatelessWidget {
   String caseName;
@@ -35,15 +37,12 @@ class CardClosed extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   caseName,
-                  style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
+                  style:TextStyles.caseNameTextStyle,
                 ),
               ),
               Text(
                 '$closedCases',
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                style:TextStyles.typeCasesTextStyle,
               ),
             ],
           ),
@@ -66,24 +65,18 @@ class CardClosed extends StatelessWidget {
                       recovered != 0
                           ? Text(
                               '$recoveredPercentage %',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 24),
+                              style: TextStyles.typeConditionPercentageTextStyle,
                             )
                           : Text(
-                              'No recovered',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 16),
+                             Strings.STATUS_NO_RECOVERY,
+                              style:TextStyles.noStatusTextStyle,
                             ),
                     ],
                   ),
                 ),
                 Text(
-                  'Recovered',
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
+                  Strings.STATUS_RECOVERY,
+                  style: TextStyles.statusTextStyle,
                 ),
                 Container(
                   child: Row(
@@ -95,24 +88,18 @@ class CardClosed extends StatelessWidget {
                       death != 0
                           ? Text(
                               ' $deathPercentage %',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 24),
+                              style:TextStyles.typeConditionPercentageTextStyle,
                             )
                           : Text(
-                              'No death',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 16),
+                             Strings.STATUS_NO_DEATH,
+                              style: TextStyles.noStatusTextStyle,
                             ),
                     ],
                   ),
                 ),
                 Text(
-                  'Death',
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
+                  Strings.STATUS_DEATH,
+                  style: TextStyles.statusTextStyle,
                 ),
               ],
             ),

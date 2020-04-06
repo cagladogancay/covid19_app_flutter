@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardWidget extends StatelessWidget {
   String statusLabel;
@@ -26,7 +27,7 @@ class CardWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 statusLabel,
-                style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
+                style: TextStyles.statusLabelTextStyle,
               ),
             ),
             Text(

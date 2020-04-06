@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttercovid19/utils/strings.dart';
+import 'package:fluttercovid19/utils/text_styles.dart';
 import 'package:fluttercovid19/widgets/card_cases.dart';
 import 'package:fluttercovid19/widgets/card_home.dart';
 import 'package:fluttercovid19/screens/detail_screen.dart';
@@ -16,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Future<Null> getCountriesData() async {
-    final response = await http.get(urlCountry);
+    final response = await http.get(Strings.URL_COUNTRY);
     if (response.statusCode == 200) {
       final dataCountry = jsonDecode(response.body);
       setState(() {
@@ -27,8 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+
   Future<All> getAllCases() async {
-    var response = await http.get(urlAll);
+    var response = await http.get(Strings.URL_ALL);
     var decodedJson = json.decode(response.body);
     allCases = All.fromJson(decodedJson);
     return allCases;
@@ -79,17 +82,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const EdgeInsets.only(right: 32, bottom: 16),
                               child: Text(
                                 dateFormat.toString(),
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.white),
+                                style: TextStyles.appDateTextStyle,
                               ),
                             ),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 48),
                               child: Text(
-                                'Corona Virus Cases',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.white),
+                                Strings.APP_TITLE,
+                                style: TextStyles.appTitleTextStyle,
                               ),
                             ),
                             Padding(
@@ -97,10 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const EdgeInsets.only(right: 48, top: 16),
                               child: Text(
                                 snapshot.data.cases.toString(),
-                                style: TextStyle(
-                                    fontSize: 32,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyles.casesTextStyle,
                               ),
                             ),
                           ],
@@ -116,9 +114,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16),
                               child: CardWidget(
-                                  'Deaths', snapshot.data.deaths, Colors.green),
+                                  Strings.STATUS_LABEL_NAME_1, snapshot.data.deaths, Colors.green),
                             ),
-                            CardWidget('Recovered', snapshot.data.recovered,
+                            CardWidget(Strings.STATUS_RECOVERY, snapshot.data.recovered,
                                 Colors.red),
                           ],
                         ),
@@ -136,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 0.2,
-                        child: CardCases('Active Cases', snapshot.data.active),
+                        child: CardCases(Strings.CASE_NAME_1, snapshot.data.active),
                       ),
                       //country selection
                       Container(
@@ -147,20 +145,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             Center(
                               child: Text(
-                                'Select your country',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.grey.shade700),
+                                Strings.SELECT_COUNTRY,
+                                style: TextStyles.selectCountryTextStyle,
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 8),
                               child: DropdownButton(
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                  ),
+                                  style: TextStyles.dropdownTextStyle,
                                   elevation: 16,
-                                  value: isSelectedCountry,
+                                  value: Strings.IS_SELECTED_COUNTRY,
                                   items: countriesList
                                       .map((f) => DropdownMenuItem(
                                           value: f.country,
@@ -191,20 +185,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     left: 8),
                                                 child: Text(
                                                   f.country,
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: Colors.redAccent),
+                                                  style: TextStyles
+                                                      .dropdownItemTextStyle,
                                                 ),
                                               ),
                                             ],
                                           )))
                                       .toList(),
                                   onChanged: (value) {
-                                    isSelectedCountry = value;
+                                    Strings.IS_SELECTED_COUNTRY = value;
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            DetailScreen(isSelectedCountry),
+                                            DetailScreen(Strings.IS_SELECTED_COUNTRY),
                                       ),
                                     );
                                   }),
@@ -218,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             );
           } else {
-            return Text('Invalid Api');
+            return Text(Strings.API_INVALID);
           }
         },
       ),

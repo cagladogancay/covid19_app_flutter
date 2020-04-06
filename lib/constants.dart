@@ -12,13 +12,10 @@ String updatedDate(int updated) {
 }
 
 //variables
-String urlAll = "https://corona.lmao.ninja/all";
-String urlCountry = "https://corona.lmao.ninja/countries/";
 List<Countries> countriesList = [];
 Future<Null> dataCountry;
 All allCases;
 Future<All> dataAll;
 Countries allCountries;
-String isSelectedCountry = 'USA';
 Future<CountryDetail> dataDetail;
 CountryDetail countryDetail;
