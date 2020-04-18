@@ -11,7 +11,7 @@ import 'package:fluttercovid19/commons/custom_detail_app_bar.dart';
 import 'package:http/http.dart' as http;
 
 class DetailScreen extends StatefulWidget {
-  String country;
+  final String country;
   DetailScreen(this.country);
 
   @override
@@ -23,7 +23,7 @@ class _DetailScreenState extends State<DetailScreen> {
   void initState() {
     super.initState();
     String countryName = widget.country.toLowerCase();
-    String urlDetail = "https://corona.lmao.ninja/countries/$countryName";
+    String urlDetail = "https://corona.lmao.ninja/v2/countries/$countryName";
     print(urlDetail);
     Future<CountryDetail> getDetail() async {
       var response = await http.get(urlDetail);

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardCases extends StatelessWidget {
-  int activeCases;
-  String caseName;
+  final int activeCases;
+  final String caseName;
 
   CardCases(this.caseName, this.activeCases);
   @override

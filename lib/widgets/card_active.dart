@@ -4,13 +4,11 @@ import 'package:fluttercovid19/utils/strings.dart';
 import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardActive extends StatelessWidget {
-  int todayCases;
-  String caseName;
-  int critical;
-  int totalCases;
-  int active;
-  int death;
-  int recovered;
+  final int todayCases;
+  final String caseName;
+  final int critical;
+  final int totalCases;
+  final int active;
 
   CardActive(
     this.caseName,

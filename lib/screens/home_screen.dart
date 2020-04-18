@@ -73,38 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-//                      //Covid Cases
-//                      Positioned(
-//                        top: 50,
-//                        child: Column(
-//                          children: <Widget>[
-//                            Padding(
-//                              padding:
-//                                  const EdgeInsets.only(right: 32, bottom: 16),
-//                              child: Text(
-//                                dateFormat.toString(),
-//                                style: TextStyles.appDateTextStyle,
-//                              ),
-//                            ),
-//                            Padding(
-//                              padding:
-//                                  const EdgeInsets.symmetric(horizontal: 48),
-//                              child: Text(
-//                                Strings.APP_TITLE,
-//                                style: TextStyles.appTitleTextStyle,
-//                              ),
-//                            ),
-//                            Padding(
-//                              padding:
-//                                  const EdgeInsets.only(right: 48, top: 16),
-//                              child: Text(
-//                                snapshot.data.cases.toString(),
-//                                style: TextStyles.casesTextStyle,
-//                              ),
-//                            ),
-//                          ],
-//                        ),
-//                      ),
                       //Covid recovery and death
                       Positioned(
                         top: 200,
@@ -156,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: DropdownButton(
                                   style: TextStyles.dropdownTextStyle,
                                   elevation: 16,
-                                  value: Strings.IS_SELECTED_COUNTRY,
+                                  value: Strings.isSelectedCountry,
                                   items: countriesList
                                       .map((f) => DropdownMenuItem(
                                           value: f.country,
@@ -195,11 +163,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                           )))
                                       .toList(),
                                   onChanged: (value) {
-                                    Strings.IS_SELECTED_COUNTRY = value;
+                                    Strings.isSelectedCountry = value;
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) => DetailScreen(
-                                            Strings.IS_SELECTED_COUNTRY),
+                                            Strings.isSelectedCountry),
                                       ),
                                     );
                                   }),

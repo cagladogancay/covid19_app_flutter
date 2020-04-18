@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:fluttercovid19/screens/home_screen.dart';
 import 'package:fluttercovid19/utils/strings.dart';
 import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CustomDetailAppBar extends StatefulWidget {
-  String country, dateFormat, flag;
-  int cases;
+  final String country, dateFormat, flag;
+  final int cases;
   CustomDetailAppBar(this.country, this.dateFormat, this.cases, this.flag);
 
   @override
@@ -40,6 +41,7 @@ class _CustomDetailAppBarState extends State<CustomDetailAppBar> {
                   style: TextStyles.countryNameTextStyle,
                 ),
                 TextSpan(text: '\n'),
+                TextSpan(text: '\n'),
                 TextSpan(
                   text: widget.dateFormat,
                   style: TextStyles.appDateTextStyle,
@@ -59,6 +61,7 @@ class _CustomDetailAppBarState extends State<CustomDetailAppBar> {
             ),
           ),
           Expanded(
+            flex: 2,
             child: Image.network(
               widget.flag,
               height: 100,

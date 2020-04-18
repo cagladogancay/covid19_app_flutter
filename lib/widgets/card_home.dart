@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CardWidget extends StatelessWidget {
-  String statusLabel;
-  int status;
-  MaterialColor statusColor;
+  final String statusLabel;
+  final int status;
+  final MaterialColor statusColor;
 
   CardWidget(this.statusLabel, this.status, this.statusColor);
 

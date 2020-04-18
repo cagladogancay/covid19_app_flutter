@@ -3,8 +3,8 @@ import 'package:fluttercovid19/utils/strings.dart';
 import 'package:fluttercovid19/utils/text_styles.dart';
 
 class CustomHomeAppBar extends StatefulWidget {
-  String dateFormat;
-  int cases;
+  final String dateFormat;
+  final int cases;
   CustomHomeAppBar(this.dateFormat, this.cases);
 
   @override
