@@ -1,16 +1,9 @@
-# fluttercovid19
+# Covid19 App
 
-A new Flutter application.
+Covid is coded with Flutter.You can look at the screenshot in below :
 
-## Getting Started
+![covid19](https://user-images.githubusercontent.com/36920742/81341383-1b9fdd80-90ba-11ea-8d56-b45291336fce.png)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Resource
+- [Ui design on Dribble](https://dribbble.com/shots/10816186-Coronavirus-Worldometer-UI-kit-Adobe-XD/attachments/2471125?mode=media)
+- [Novel Covid Api](https://docs.corona.lmao-xd.wtf/version-2)
